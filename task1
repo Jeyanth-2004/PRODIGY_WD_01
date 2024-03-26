@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interactive Navigation Menu</title>
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    scroll-behavior: smooth;
+  }
+  nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #333;
+    z-index: 1000;
+    transition: background-color 0.3s ease;
+  }
+  nav ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+  }
+  nav li {
+    margin: 0 15px;
+  }
+  nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 15px;
+    display: inline-block;
+    transition: color 0.3s ease;
+  }
+  nav a:hover {
+    color: #ff9900; /* Change color on hover */
+  }
+</style>
+</head>
+<body>
+<nav id="main-menu">
+  <ul>
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div id="home" style="height: 1000px; background-color: #f0f0f0;">Home Section</div>
+<div id="about" style="height: 1000px; background-color: #e0e0e0;">About Section</div>
+<div id="services" style="height: 1000px; background-color: #d0d0d0;">Services Section</div>
+<div id="contact" style="height: 1000px; background-color: #c0c0c0;">Contact Section</div>
+
+<script>
+  window.addEventListener('scroll', function() {
+    var nav = document.getElementById('main-menu');
+    if (window.scrollY > 50) {
+      nav.style.backgroundColor = '#222'; // Change background color on scroll
+    } else {
+      nav.style.backgroundColor = '#333';
+    }
+  });
+
+  // Smooth scrolling
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+
+      document.querySelector(this.getAttribute('href')).scrollIntoView({
+        behavior: 'smooth'
+      });
+    });
+  });
+</script>
+</body>
+</html>
